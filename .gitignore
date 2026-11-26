@@ -1,0 +1,35 @@
+# --- secrets & machine-local (never commit) ---
+**/.env
+**/.env.*
+!**/.env.example
+**/local.properties
+**/key.properties
+**/*.jks
+**/*.keystore
+**/google-services.json
+**/GoogleService-Info.plist
+**/*firebase-adminsdk*.json
+**/*.p8
+**/*.p12
+**/*.pem
+
+# --- Python ---
+server/.venv/
+server/*.db
+**/__pycache__/
+.pytest_cache/
+
+# --- Flutter / Android / iOS build ---
+app/build/
+app/.dart_tool/
+app/.flutter-plugins-dependencies
+**/.dart_tool/
+**/build/
+.agent/
+
+# iOS generated (also listed in app/ios/.gitignore)
+app/ios/Flutter/Generated.xcconfig
+app/ios/Flutter/flutter_export_environment.sh
+app/ios/Flutter/ephemeral/
+
+# Firebase·푸시 키는 환경변수 경로로만 쓴다

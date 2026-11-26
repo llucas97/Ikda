@@ -1,0 +1,88 @@
+name: ilgeodeurim
+description: 읽다 — 서류를 찍기만 하면 쉬운 말로 읽어 드리는 어르신용 앱
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  # kakao_flutter_sdk_user 2.x 가 Dart 3.9 / Flutter 3.38 이상을 요구한다.
+  sdk: '>=3.9.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # 서류 테두리 자동 인식 + 자동 촬영 + 보정 (Android: ML Kit, iOS: VisionKit)
+  cunning_document_scanner: ^3.1.0
+  # 결과를 소리로 읽어주기
+  flutter_tts: ^4.2.5
+  # 웹: 스캐너 대신 사진 파일 고르기 / 사진 데이터(XFile) 공통 타입
+  image_picker: ^1.2.4
+  cross_file: ^0.3.4
+  # 서버로 사진 올리기
+  http: ^1.6.0
+  # 서류·할 일 저장 (앱을 껐다 켜도 유지)
+  shared_preferences: ^2.5.6
+  # 기한 하루 전·당일 아침 9시 알림
+  flutter_local_notifications: ^23.0.2
+  timezone: ^0.11.2
+  material_ui: ^1.11.0
+  # 카카오 로그인 (네이티브 앱 키만 앱에 넣는다)
+  kakao_flutter_sdk_user: ^2.1.0
+  # 구글 로그인. 7.x: GoogleSignIn.instance.initialize → authenticate → idToken
+  google_sign_in: ^7.2.0
+  # 토큰은 EncryptedSharedPreferences / Keychain. 10+ 는 encryptedSharedPreferences 가 없다.
+  flutter_secure_storage: 9.2.4
+  # 공식 SVG (카카오 심볼, 구글 G) 를 그리기 위해
+  flutter_svg: ^2.2.0
+  # 다른 앱에서 사진·PDF 받기 (iOS 는 Swift Package, 공유 확장은 Xcode 에서 연결)
+  receive_sharing_intent: ^1.9.0
+  firebase_core: ^5.2.0
+  firebase_messaging: ^17.0.0
+  app_links: ^7.2.2
+  image: ^4.5.4
+  pdfrx: ^2.2.24
+  share_plus: ^12.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/brand/app_icon.png
+  adaptive_icon_background: "#FFFDF8"
+  adaptive_icon_foreground: assets/brand/app_icon.png
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: assets/brand/app_icon.png
+    background_color: "#FFFDF8"
+    theme_color: "#1F1D1A"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/brand/kakao_symbol.svg
+    - assets/brand/google_g.svg
+    - assets/brand/app_icon.png
+  # 본문 서체: IBM Plex Sans KR (Noto/Roboto 기본값 대신, 숫자 가독성이 좋은 한글 서체)
+  fonts:
+    - family: IBMPlexSansKR
+      fonts:
+        - asset: fonts/IBMPlexSansKR-Regular.ttf
+          weight: 400
+        - asset: fonts/IBMPlexSansKR-Medium.ttf
+          weight: 500
+        - asset: fonts/IBMPlexSansKR-SemiBold.ttf
+          weight: 600
+        - asset: fonts/IBMPlexSansKR-Bold.ttf
+          weight: 700
+  # 아이콘: Material Icons 대신 Phosphor (lib/widgets/ph_icons.dart)
+    - family: PhosphorBold
+      fonts:
+        - asset: fonts/Phosphor-Bold.ttf
+    - family: PhosphorFill
+      fonts:
+        - asset: fonts/Phosphor-Fill.ttf

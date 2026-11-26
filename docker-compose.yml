@@ -1,0 +1,44 @@
+# 로컬 개발용 Postgres. 앱 서버는 보통 이 PC에서 직접 띄운다.
+#   docker compose up -d
+#   cd server && DATABASE_URL=postgresql://ilgeo:ilgeo@localhost:5432/ilgeodeurim python db/migrate.py
+#
+# 서버까지 컨테이너로: docker compose --profile server up
+# 그 JWT_SECRET 은 로컬 전용이다. 운영 키를 여기에 넣지 말 것.
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ilgeo
+      POSTGRES_PASSWORD: ilgeo
+      POSTGRES_DB: ilgeodeurim
+    ports:
+      - "5432:5432"
+    volumes:
+      - ilgeo_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ilgeo -d ilgeodeurim"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  server:
+    profiles: ["server"]
+    image: python:3.12-slim
+    working_dir: /srv
+    volumes:
+      - ./server:/srv
+    environment:
+      DATABASE_URL: postgresql://ilgeo:ilgeo@postgres:5432/ilgeodeurim
+      JWT_SECRET: local-dev-only-not-a-real-secret-0123456789
+      AUTH_FAKE_PROVIDER: "1"
+      AI_PROVIDER: fake
+    command: ["sh", "-c", "pip install -q -r requirements.txt && python db/migrate.py && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  ilgeo_pg:
