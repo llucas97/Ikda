@@ -216,6 +216,10 @@ curl -F "images=@samples/bill.jpg;type=image/jpeg" localhost:8001/api/analyze
 - 에러 메시지 개선
 - 오프라인 모드 개선
 
+### 7. 사진 인증 복약 알람
+
+기획만 있다. [docs/med-photo-alarm-plan.md](docs/med-photo-alarm-plan.md). 자녀가 약 시간과 기준 사진을 맞추면, 그 시각에 부모님 폰이 울리고 약이 비슷할 때만 복용으로 기록한다.
+
 ---
 
 ## 개발 환경 참고사항

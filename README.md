@@ -88,6 +88,7 @@ flutter analyze && flutter test
 - **앱 설정 및 Firebase/로그인 준비**: [docs/setup.md](docs/setup.md)
 - **API 계약**: [docs/api.md](docs/api.md)
 - **개발 노트 및 계획**: [docs/dev-notes.md](docs/dev-notes.md)
+- **사진 인증 복약 알람 기획**: [docs/med-photo-alarm-plan.md](docs/med-photo-alarm-plan.md)
 
 ## 라이선스
 
