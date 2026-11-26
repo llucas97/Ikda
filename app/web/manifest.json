@@ -3,7 +3,7 @@
     "short_name": "읽다",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#FFFDF8",
+    "background_color": "#F2C230",
     "theme_color": "#1F1D1A",
     "description": "서류를 찍기만 하면 쉬운 말로 읽어 드려요",
     "orientation": "portrait-primary",
