@@ -216,6 +216,10 @@ curl -F "images=@samples/bill.jpg;type=image/jpeg" localhost:8001/api/analyze
 - 에러 메시지 개선
 - 오프라인 모드 개선
 
+### 7. Rust 전환 계획 검토
+
+서버만 Rust로 옮기는 권장안과 단계, 위험은 [docs/rust-migration-plan.md](docs/rust-migration-plan.md)에 정리했다. 착수 전에 그 문서의 미결정 항목을 정한다. 이 항목은 계획 검토이며, 앱·서버 구현은 아직 바꾸지 않는다.
+
 ---
 
 ## 개발 환경 참고사항
