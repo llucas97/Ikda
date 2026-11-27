@@ -88,6 +88,7 @@ flutter analyze && flutter test
 - **앱 설정 및 Firebase/로그인 준비**: [docs/setup.md](docs/setup.md)
 - **API 계약**: [docs/api.md](docs/api.md)
 - **개발 노트 및 계획**: [docs/dev-notes.md](docs/dev-notes.md)
+- **Rust 전환 계획**: [docs/rust-migration-plan.md](docs/rust-migration-plan.md)
 
 ## 라이선스
 
